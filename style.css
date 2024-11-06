@@ -1,0 +1,103 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#clouds-container {
+    background-color: #87CEEB; /* Sky blue */
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cloud {
+    width: 150px;
+    height: 75px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#tree-area {
+    background-color: #87CEEB;
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Make sure trunks reach down */
+    position: relative; /* Necessary for positioning leaves */
+}
+
+.tree {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tree-trunk {
+    width: 50px;
+    height: 150px;
+    background-color: #8B4513; /* Brown */
+}
+.tree-name {
+    font-weight: bold;
+    margin-bottom: 20px; /* Adjust to add space above the leaves */
+    text-align: center;
+    position: relative;
+    top: -200px; /* Ensure it stays above leaves */
+}
+
+
+.leaf {
+    width: 30px;
+    height: 30px;
+    background-color: #32CD32; /* Green */
+    position: absolute; /* For custom positioning around the tree trunk */
+}
+
+#dirt-area {
+    background-color: #8B4513; /* Dirt brown */
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Align trash bags at the top of the dirt */
+    position: relative;
+}
+
+.trash-bag {
+    width: 40px;
+    height: 40px;
+    background-color: gray;
+    margin-top: -39px; /* Ensure trash bags are resting on the dirt */
+}
+
+li {
+    display: inline;
+
+  }
+
+.home-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-button:hover {
+    background-color: #45a049;
+}
+
+body{
+    background-color: #87CEEB;
+}
