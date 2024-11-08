@@ -101,3 +101,32 @@ li {
 body{
     background-color: #87CEEB;
 }
+/* Container for both charts and filter */
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligns charts at the top */
+    max-width: 1200px; /* Set the maximum width for the container */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Styling for the first chart */
+#yearChart {
+    width: 48%; /* Make the first chart take up 48% of the container's width */
+    height: 300px; /* Set fixed height */
+}
+
+/* Styling for the filter dropdown */
+#wasteTypeSelect {
+    width: 180px; /* Set a fixed width for the dropdown */
+    padding: 8px;
+    font-size: 14px;
+    margin-left: 20px; /* Space between chart and dropdown */
+    align-self: flex-start; /* Align dropdown to the top */
+}
+
+/* Styling for the second chart (Waste Type chart) */
+#wasteTypeChart {
+    width: 48%; /* Make the second chart take up 48% of the container's width */
+    height: 300px; /* Set fixed height */
+}
