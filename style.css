@@ -101,32 +101,42 @@ li {
 body{
     background-color: #87CEEB;
 }
-/* Container for both charts and filter */
-.chart-container {
+/* Style for the container holding both charts */
+.charts-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Aligns charts at the top */
-    max-width: 1200px; /* Set the maximum width for the container */
-    margin: 0 auto; /* Center the container */
-}
-
-/* Styling for the first chart */
-#yearChart {
-    width: 48%; /* Make the first chart take up 48% of the container's width */
-    height: 300px; /* Set fixed height */
-}
-
-/* Styling for the filter dropdown */
-#wasteTypeSelect {
-    width: 180px; /* Set a fixed width for the dropdown */
-    padding: 8px;
+    justify-content: space-between; /* This will place the charts side by side */
+    gap: 20px; /* Add some space between the charts */
+    margin: 20px;
+  }
+  
+  /* Style for the first chart (Yearly Total KG chart) */
+  #yearChartContainer {
+    flex: 1; /* Make this chart take up the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px; /* Set a max-width for the first chart */
+    height: 300px; /* Set a height for the first chart */
+  }
+  
+  /* Style for the second chart (Waste Type chart) */
+  #wasteTypeChartContainer {
+    flex: 1; /* Make the second chart take up the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px; /* Set a max-width for the second chart */
+    height: 300px; /* Set a height for the second chart */
+  }
+  
+  /* Style for the select dropdown */
+  #wasteTypeSelect {
+    margin-top: 20px; /* Add some space between the chart and dropdown */
+    padding: 5px;
+    width: 200px; /* Set a fixed width for the dropdown */
     font-size: 14px;
-    margin-left: 20px; /* Space between chart and dropdown */
-    align-self: flex-start; /* Align dropdown to the top */
-}
-
-/* Styling for the second chart (Waste Type chart) */
-#wasteTypeChart {
-    width: 48%; /* Make the second chart take up 48% of the container's width */
-    height: 300px; /* Set fixed height */
-}
+    cursor: pointer;
+  }
+  

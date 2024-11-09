@@ -6,7 +6,6 @@ fetch("data/data.csv")
         // Data structures for charts
         const yearData = {}; // KG per year
         const wasteTypeData = {}; // KG per waste type
-        const wasteTypeYearData = {}; // KG per waste type by year
 
         // Process CSV rows
         rows.forEach(row => {
@@ -24,12 +23,6 @@ fetch("data/data.csv")
 
                 // Process waste type data for Waste Type chart
                 wasteTypeData[afvalsoort] = (wasteTypeData[afvalsoort] || 0) + kg;
-
-                // Process waste type by year for filter functionality
-                if (!wasteTypeYearData[afvalsoort]) {
-                    wasteTypeYearData[afvalsoort] = {};
-                }
-                wasteTypeYearData[afvalsoort][year] = (wasteTypeYearData[afvalsoort][year] || 0) + kg;
             }
         });
 
@@ -43,7 +36,7 @@ fetch("data/data.csv")
 
         // Create Yearly Total KG chart
         const yearCtx = document.getElementById('yearChart').getContext('2d');
-        const yearChart = new Chart(yearCtx, {
+        new Chart(yearCtx, {
             type: 'bar',
             data: {
                 labels: yearLabels,
@@ -57,7 +50,12 @@ fetch("data/data.csv")
             },
             options: {
                 responsive: true,
-                layout: { padding: { top: 60, left: 50 } },
+                layout: {
+                    padding: {
+                        top: 60,
+                        left: 50
+                    }
+                },
                 scales: {
                     x: { beginAtZero: true },
                     y: { beginAtZero: true }
@@ -65,7 +63,16 @@ fetch("data/data.csv")
             }
         });
 
-        // Create Waste Type chart (initial state)
+        // Populate the dropdown with waste types
+        const wasteTypeSelect = document.getElementById('wasteTypeSelect');
+        wasteTypeLabels.forEach(wasteType => {
+            const option = document.createElement('option');
+            option.value = wasteType;
+            option.textContent = wasteType;
+            wasteTypeSelect.appendChild(option);
+        });
+
+        // Create Waste Type chart with the selected waste type
         const wasteTypeCtx = document.getElementById('wasteTypeChart').getContext('2d');
         const wasteTypeChart = new Chart(wasteTypeCtx, {
             type: 'bar',
@@ -81,40 +88,37 @@ fetch("data/data.csv")
             },
             options: {
                 responsive: true,
-                layout: { padding: { top: 60, left: 50} },
-                scales: {
-                    x: { beginAtZero: true },
-                    y: { beginAtZero: true }
-                }
+                layout: { padding: { top: 60, left: 50 } },
+                scales: { x: { beginAtZero: true }, y: { beginAtZero: true } }
             }
         });
 
-        // Populate the dropdown with waste types
-        const wasteTypeSelect = document.getElementById('wasteTypeSelect');
-        wasteTypeLabels.forEach(wasteType => {
-            const option = document.createElement('option');
-            option.value = wasteType;
-            option.text = wasteType;
-            wasteTypeSelect.appendChild(option);
-        });
-
-        // Update Waste Type chart based on selected waste type from dropdown
+        // Update chart based on selected waste type
         wasteTypeSelect.addEventListener('change', (event) => {
-            const selectedWasteType = event.target.value;
-            updateWasteTypeYearData(selectedWasteType);
+            const selectedType = event.target.value;
+
+            if (selectedType) {
+                // Filter data by year for the selected waste type
+                const selectedTypeYearData = {};
+                rows.forEach(row => {
+                    const columns = row.split(';');
+                    const location = columns[4];
+                    const uitvoerDatum = columns[5];
+                    const kg = parseFloat(columns[6]);
+                    const afvalsoort = columns[13];
+
+                    if (location === "HEERLEN" && afvalsoort === selectedType) {
+                        const year = uitvoerDatum.slice(-4);
+                        selectedTypeYearData[year] = (selectedTypeYearData[year] || 0) + kg;
+                    }
+                });
+
+                // Update the Waste Type chart
+                wasteTypeChart.data.labels = Object.keys(selectedTypeYearData);
+                wasteTypeChart.data.datasets[0].data = Object.values(selectedTypeYearData);
+                wasteTypeChart.data.datasets[0].label = `KG Collected for ${selectedType} by Year`;
+                wasteTypeChart.update();
+            }
         });
-
-        // Function to update Waste Type chart based on selected waste type
-        function updateWasteTypeYearData(selectedType) {
-            const selectedTypeYearData = wasteTypeYearData[selectedType];
-            const years = Object.keys(selectedTypeYearData);
-            const data = years.map(year => selectedTypeYearData[year]);
-
-            // Update the chart with filtered data
-            wasteTypeChart.data.labels = years;
-            wasteTypeChart.data.datasets[0].data = data;
-            wasteTypeChart.data.datasets[0].label = `KG Collected for ${selectedType} by Year`;
-            wasteTypeChart.update();
-        }
     })
     .catch(error => console.error("Error loading CSV:", error));
