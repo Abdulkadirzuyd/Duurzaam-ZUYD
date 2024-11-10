@@ -8,24 +8,21 @@
 </head>
 <body>
     <button onclick="location.href='index.html'" class="home-button">Home</button>
-     <!-- Canvas for Yearly Total KG chart -->
-     <div class="charts-container">
-        <div id="yearChartContainer">
-            <canvas id="yearChart" width="1000" height="1000"></canvas>
-        </div>
-        <div id="wasteTypeChartContainer">
-            <canvas id="wasteTypeChart"></canvas>
-            <select id="wasteTypeSelect">
-                <option value="">Select Waste Type</option>
-                <!-- Waste types will be dynamically populated here -->
-            </select>
-        </div>
-    </div>
+     
+  
+     <canvas id="yearlyChart" width="100" height="200" ></canvas>
+     
+     <select id="wasteTypeSelect">
+        <option value="">Selecteer Afvalsoort</option>
+    </select>
     
-    
+     <canvas id="wasteTypeChart" width="100" height="200"></canvas>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="heerlen.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <footer>    
+        © Abdulkadir Coskun & Efdal Kislali
+    </footer>
 </body>
 </html>

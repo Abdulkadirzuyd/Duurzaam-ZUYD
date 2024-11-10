@@ -42,6 +42,18 @@ trees.forEach((tree, index) => {
                 window.location.href = "heerlen.html";
             });
         }
+        
+    if (tree.name === "Sittard") {
+            treeDiv.on("click", function() {
+                window.location.href = "sittard.html";
+            });
+        }
+    if (tree.name === "Maastricht") {
+            treeDiv.on("click", function() {
+                window.location.href = "maastricht.html";
+            });
+        }
+                
 
     // Add leaves (relative to tree trunk)
     treeDiv.selectAll(".leaf")

@@ -98,45 +98,10 @@ li {
     background-color: #45a049;
 }
 
-body{
-    background-color: #87CEEB;
-}
-/* Style for the container holding both charts */
-.charts-container {
-    display: flex;
-    justify-content: space-between; /* This will place the charts side by side */
-    gap: 20px; /* Add some space between the charts */
-    margin: 20px;
-  }
-  
-  /* Style for the first chart (Yearly Total KG chart) */
-  #yearChartContainer {
-    flex: 1; /* Make this chart take up the remaining space */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 500px; /* Set a max-width for the first chart */
-    height: 300px; /* Set a height for the first chart */
-  }
-  
-  /* Style for the second chart (Waste Type chart) */
-  #wasteTypeChartContainer {
-    flex: 1; /* Make the second chart take up the remaining space */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 500px; /* Set a max-width for the second chart */
-    height: 300px; /* Set a height for the second chart */
-  }
-  
-  /* Style for the select dropdown */
-  #wasteTypeSelect {
+#wasteTypeSelect {
     margin-top: 20px; /* Add some space between the chart and dropdown */
     padding: 5px;
     width: 200px; /* Set a fixed width for the dropdown */
     font-size: 14px;
     cursor: pointer;
   }
-  
