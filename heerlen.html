@@ -8,11 +8,21 @@
 </head>
 <body>
     <button onclick="location.href='index.html'" class="home-button">Home</button>
+     
+  
+     <canvas id="yearlyChart" width="100" height="200" ></canvas>
+     
+     <select id="wasteTypeSelect">
+        <option value="">Selecteer Afvalsoort</option>
+    </select>
     
-    <div id="line-chart"></div>
-    <div id="bar-chart"></div>
-    
+     <canvas id="wasteTypeChart" width="100" height="200"></canvas>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="heerlen.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <footer>    
+        © Abdulkadir Coskun & Efdal Kislali
+    </footer>
 </body>
 </html>

@@ -5,16 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Page Tree and Trash Visualization</title>
     <link rel="stylesheet" href="style.css">
-    
+    <style>
+        .chart-container {
+            background-color: skyblue;
+            padding: 20px; /* Geeft wat ruimte om de grafiek heen */
+            display: inline-block; /* Zorgt ervoor dat het alleen de grootte van de inhoud heeft */
+}
+        /* Inline CSS om de grafiek grootte te beperken */
+        #zuydWasteSeparationTrendChart {
+            
+            width: 45%; /* Zorgt dat de grafiek een kwart van de pagina inneemt */
+            height: auto;
+            max-width: 500px; /* Max grootte van de grafiek */
+            max-height: 400px;
+            margin: 20px auto; /* Centraal plaatsen van de grafiek */
+            background-color: rgba(255, 255, 255, 0.8); /* Transparante achtergrond */
+            border: 1px solid #ccc; /* Optioneel: omranding */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Schaduw voor esthetiek */
+        }
+    </style>
 </head>
 <body>
-    <head>
-        <body>
-            <button onclick="location.href='index.html'" class="home-button">Home</button>
-    </head>
-    <div id="clouds-container"></div>
+    <button onclick="location.href='index.html'" class="home-button">Home</button>
+    
+    <!-- Canvas voor Zuyd afvalscheiding lijn grafiek -->
+    <div class="chart-container">
+        <canvas id="zuydWasteSeparationTrendChart"></canvas>
+    </div>
+    
     <div id="tree-area"></div>
     <div id="dirt-area"></div>
+
+    <!-- Chart.js moet vóór main.js geladen worden -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="main.js"></script>
 </body>
