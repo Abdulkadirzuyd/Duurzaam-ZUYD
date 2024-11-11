@@ -111,3 +111,10 @@ li {
     max-width: 600px;
     margin: 0 auto;
 }
+
+footer {
+    padding: 10px;
+    font-size: 14px; /* eventueel aanpassen naar wens */
+    text-align: center;
+   
+}
